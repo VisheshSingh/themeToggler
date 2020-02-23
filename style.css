@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  --accent-color: orangered;
+  --background-color: #fff;
+  --text-color: #000;
+  --btn-text-color: var(--background-color);
+  --transition-duration: 1s;
+
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  transition: var(--transition-duration);
+
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+body.dark {
+  --accent-color: #d0d066;
+  --background-color: #333;
+  --text-color: #fff;
+  --btn-text-color: var(--background-color);
+}
+
+.theme-toggler-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--accent-color);
+  color: var(--btn-text-color);
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  outline: 0;
+  cursor: pointer;
+  transform: scale(1);
+  transition: var(--transition-duration);
+}
+
+.theme-toggler-btn:hover,
+.theme-toggler-btn:focus {
+  transform: scale(1.1);
+}
+
+.theme-toggler-btn .icon {
+  margin-right: 0.5rem;
+  fill: var(--btn-text-color);
+}
+
+.sun-moon-container {
+  --rotation: 0;
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  height: 200vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate((var(--rotation)));
+  transition: transform var(--transition-duration);
+}
+
+.dark .sun-moon-container {
+  /* --rotation: 180; */
+  transform: rotate(180deg);
+}
+
+.sun,
+.moon {
+  position: absolute;
+  height: 30px !important;
+  width: 30px !important;
+  fill: var(--accent-color);
+  transition: opacity, fill, var(--transition-duration);
+}
+
+.sun {
+  top: 5%;
+  opacity: 1;
+}
+
+.moon {
+  bottom: 5%;
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.dark .sun {
+  opacity: 0;
+}
+
+.dark .moon {
+  opacity: 1;
+}
